@@ -58,6 +58,8 @@
 /* MARK: - ステータスバー */
 "statusbar.guide" = "ガイド";
 "statusbar.guideHelp" = "セットアップマニュアル";
+"statusbar.project" = "プロジェクト";
+"statusbar.projectHelp" = "GitHub でプロジェクトを開く";
 "statusbar.about" = "♥ について";
 "statusbar.aboutHelp" = "PKG Sender について — サポートリンク";
 

@@ -306,6 +306,10 @@ struct RootView: View {
                 .buttonStyle(ThemeButtonStyle(accent: false))
                 .padding(.leading, 8)
                 .help(l10n.t("statusbar.guideHelp"))
+            Button(l10n.t("statusbar.project")) { model.openProject() }
+                .buttonStyle(ThemeButtonStyle(accent: false))
+                .padding(.leading, 8)
+                .help(l10n.t("statusbar.projectHelp"))
             if model.updateAvailable {
                 Button(l10n.t("statusbar.update")) { model.openUpdate() }
                     .buttonStyle(ThemeButtonStyle(accent: true))

@@ -1834,6 +1834,13 @@ final class AppModel: ObservableObject {
         NSWorkspace.shared.open(url)
     }
 
+    /// Open the project's GitHub page in the default browser.
+    func openProject() {
+        let urlString = "https://github.com/\(UpdateService.repository)"
+        guard let url = URL(string: urlString) else { return }
+        NSWorkspace.shared.open(url)
+    }
+
     // MARK: - Dialogs
 
     func showAbout() { sheet = .about }

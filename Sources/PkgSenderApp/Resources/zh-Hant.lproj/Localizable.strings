@@ -58,6 +58,8 @@
 /* MARK: - 狀態列 */
 "statusbar.guide" = "指南";
 "statusbar.guideHelp" = "設定手冊";
+"statusbar.project" = "項目";
+"statusbar.projectHelp" = "在 GitHub 上打開專案";
 "statusbar.about" = "♥ 關於";
 "statusbar.aboutHelp" = "關於 PKG Sender — 支援連結";
 

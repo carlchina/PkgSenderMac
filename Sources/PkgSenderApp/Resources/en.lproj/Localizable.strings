@@ -62,6 +62,8 @@
 /* MARK: - Status bar */
 "statusbar.guide" = "Guide";
 "statusbar.guideHelp" = "Setup manual";
+"statusbar.project" = "Project";
+"statusbar.projectHelp" = "Open the project on GitHub";
 "statusbar.about" = "♥ About";
 "statusbar.aboutHelp" = "About PKG Sender — support links";
 

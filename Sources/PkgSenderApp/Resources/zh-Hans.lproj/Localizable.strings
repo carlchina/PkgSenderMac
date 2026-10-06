@@ -58,6 +58,8 @@
 /* MARK: - 状态栏 */
 "statusbar.guide" = "指南";
 "statusbar.guideHelp" = "设置手册";
+"statusbar.project" = "项目";
+"statusbar.projectHelp" = "在 GitHub 上打开项目";
 "statusbar.about" = "♥ 关于";
 "statusbar.aboutHelp" = "关于 PKG Sender — 支持链接";
 
