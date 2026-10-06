@@ -63,12 +63,14 @@ echo ">> SDK: $SDK  min macOS: $MIN_OS"
 # target triple, and the toolchain's static libs are single-arch, so sharing one
 # build dir makes the second link fail with "fat file missing arch".
 #
-# NOTE: building x86_64 needs a toolchain that ships the Intel Swift runtime.
-# Apple's Command Line Tools are often Apple-Silicon-only (the
-# libswiftCompatibility*.a on this machine are `arm64,arm64e` only), in which
-# case the Intel slice cannot be produced here and the script says so instead
-# of failing halfway. On such a machine install the full Xcode (or run
-# `xcode-select -s /Applications/Xcode.app`) and re-run for a universal build.
+# NOTE: Apple's Command Line Tools on Apple Silicon ship the Swift runtime
+# static libs (libswiftCompatibility*.a, etc.) as arm64-only, so a plain
+# x86_64 link fails with "missing arch 'x86_64'". The fix (mirrors PkgViewerMac)
+# is to pass -undefined dynamic_lookup for the Intel slice so the linker defers
+# those symbols to runtime; macOS ships a universal Swift runtime in
+# /usr/lib/swift, which resolves them when the app launches on an Intel Mac.
+# If a toolchain still cannot link Intel even with that flag, fall back to
+# `./build.sh --arch auto` or select a full Xcode toolchain.
 SLICES=()
 FAILED=()
 for arch in $ARCHS; do
@@ -78,15 +80,24 @@ for arch in $ARCHS; do
   LOG="build/.slice-${arch}.log"
   # Run to completion first, then judge by the exit status; piping straight
   # into `grep -q` would race with the build and can miss the failure.
+  extra_flags=""
+  if [ "$arch" = "x86_64" ]; then
+    # CLT on Apple Silicon lacks x86_64 slices for the Swift runtime static
+    # libs (libswiftCompatibility*.a); let the linker defer those symbols to
+    # runtime dynamic lookup. macOS ships a universal Swift runtime in
+    # /usr/lib/swift that satisfies them when launched on an Intel Mac.
+    extra_flags="-Xlinker -undefined -Xlinker dynamic_lookup"
+  fi
   if swift build -c release --disable-sandbox --sdk "$SDK" --triple "$TRIPLE" \
-       --scratch-path "$SCRATCH" > "$LOG" 2>&1; then
+       --scratch-path "$SCRATCH" $extra_flags > "$LOG" 2>&1; then
     :   # success
   else
     if grep -q "missing arch 'x86_64'" "$LOG" || grep -q "not an allowed client" "$LOG"; then
-      echo "!! $arch: this toolchain ships no Intel Swift runtime" >&2
-      echo "!!   Command Line Tools here are arm64-only, so an x86_64 slice" >&2
-      echo "!!   cannot be linked. For a universal build install full Xcode:" >&2
+      echo "!! $arch: this toolchain still cannot link an Intel slice" >&2
+      echo "!!   Even with -undefined dynamic_lookup the x86_64 Swift runtime" >&2
+      echo "!!   is missing. Try a full Xcode toolchain:" >&2
       echo "!!     sudo xcode-select -s /Applications/Xcode.app && ./build.sh" >&2
+      echo "!!   or fall back to: ./build.sh --arch auto" >&2
     else
       echo "!! $arch: build failed (see $LOG)" >&2
     fi
