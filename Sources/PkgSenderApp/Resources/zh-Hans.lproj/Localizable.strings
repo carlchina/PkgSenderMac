@@ -1,0 +1,283 @@
+/* PKG Sender — 简体中文 */
+
+/* MARK: - 窗口与菜单 */
+"menu.about" = "关于 PKG Sender";
+"menu.library" = "媒体库";
+"menu.scanDrives" = "扫描驱动器…";
+"menu.addFolder" = "添加文件夹…";
+"menu.scan" = "扫描";
+"menu.selectNone" = "全不选";
+"menu.selectAll" = "全选";
+"menu.invertSelection" = "反选";
+"library.selectHelp" = "单击选择 · ⌘-单击 多选 · ⇧-单击 连选 · 双击 发送";
+"menu.transfer" = "传输";
+"menu.sendPkg" = "发送 PKG";
+"menu.copyImages" = "复制镜像";
+"menu.clearDone" = "清除已完成";
+"menu.console" = "主机";
+"menu.testConnection" = "测试连接";
+"menu.detectConsole" = "探测主机";
+"menu.shareToConsole" = "共享到主机";
+"menu.stopSharing" = "停止共享";
+"menu.ps4Sequential" = "PS4 主机（顺序安装）";
+"menu.view" = "视图";
+"menu.compact" = "精简模式";
+"menu.hideDlc" = "隐藏 DLC/更新";
+"menu.clearSearch" = "清除搜索";
+"menu.guide" = "PKG Sender 指南";
+
+/* MARK: - 标题栏 */
+"header.subtitle" = "通过局域网安装 PKG";
+"header.consoleIp" = "主机 IP";
+"header.pc" = "本机";
+"header.test" = "测试";
+"header.detect" = "↻ 探测";
+"header.noLanAddress" = "无局域网地址";
+"header.dotHelp" = "重新查找主机";
+"header.pcHelp" = "自动探测到的局域网地址 — 选择主机所在网络的网卡";
+
+/* MARK: - 工具栏 */
+"toolbar.addFolder" = "+ 添加文件夹";
+"toolbar.addFolderHelp" = "选择要搜索 PKG / 镜像文件的文件夹 — 添加后自动开始扫描";
+"toolbar.scanDrivesHelp" = "选择要搜索 PKG 文件的磁盘";
+"toolbar.scan" = "扫描";
+"toolbar.scanHelp" = "重新扫描已添加的文件夹（要添加磁盘请用「媒体库 ▸ 扫描驱动器…」）";
+"toolbar.searchPlaceholder" = "🔍 搜索标题、ID…";
+"toolbar.searchClear" = "返回完整媒体库";
+"toolbar.sendPkg" = "发送 PKG";
+"toolbar.sendPkgHelp" = "将选中的 .pkg 文件发送到主机下载器";
+"toolbar.copyImages" = "复制镜像";
+"toolbar.copyImagesHelp" = "将选中的镜像文件（.exfat/.ffpkg/.ffpfsc）复制到主机的 /data/homebrew";
+"toolbar.shareHelp" = "在主机浏览器中显示此媒体库（pkg 远程安装页面会从此电脑拉取列表与封面）";
+"toolbar.pauseAllHelp" = "暂停所有任务（可恢复）— 变为“恢复全部”";
+"toolbar.clearDoneHelp" = "仅移除已完成的行 — 不影响正在进行的下载";
+"toolbar.hideDlc" = "隐藏 DLC/更新";
+"toolbar.hideDlcHelp" = "仅显示基础游戏 — 点击卡片上的 🔗×N 查看其更新/DLC";
+"toolbar.sortHelp" = "排序媒体库";
+
+/* MARK: - 状态栏 */
+"statusbar.guide" = "指南";
+"statusbar.guideHelp" = "设置手册";
+"statusbar.about" = "♥ 关于";
+"statusbar.aboutHelp" = "关于 PKG Sender — 支持链接";
+
+/* MARK: - 精简栏 */
+"compact.expand" = "展开";
+
+/* MARK: - 媒体库面板 */
+"library.showAll" = "显示全部 ✕";
+"library.showAllHelp" = "清除搜索 — 返回完整媒体库";
+"library.gamesInFamilies" = "%d 个游戏，%d 个分组（%d 个 PS5 • %d 个 PS4）";
+"library.ps5Games" = "%d 个 PS5 游戏";
+"library.ps4Games" = "%d 个 PS4 游戏";
+"library.selected" = "• 已选 %d 个";
+"library.filterMatches" = "🔍 按“%@”筛选 — 显示 %d / %d 个";
+"library.noMatches" = "🔍 没有匹配“%@”的结果";
+"library.noGamesYet" = "暂无游戏";
+"library.state.scanning" = "正在扫描…";
+"library.state.title" = "扫描失败";
+"library.state.emptyDetail" = "这里没有找到游戏文件。请尝试其他文件夹或磁盘。";
+"library.emptyAddFirst" = "请先添加文件夹或驱动器。";
+"library.emptyPressScan" = "点击“扫描”以载入媒体库。";
+"library.emptyNoFiles" = "这里没有找到游戏文件。请尝试其他文件夹或磁盘。";
+"library.badge.dlc" = "DLC";
+"library.familyChip" = "🔗×%d";
+
+/* MARK: - 队列面板 */
+"queue.title" = "发送队列";
+"queue.compact" = "精简模式";
+"queue.compactHelp" = "隐藏游戏媒体库 — 仅显示发送队列";
+"queue.ps4console" = "PS4 主机";
+"queue.ps4consoleHelp" = "勾选后目标为 PS4：游戏会严格逐个安装（PS5 原生支持排队）";
+"queue.empty" = "队列为空";
+"queue.summary" = "%d/%d 已发送";
+"queue.summaryFailed" = "%d/%d 已发送，%d 个失败";
+"queue.state.queued" = "排队中";
+"queue.state.sending" = "发送中";
+"queue.state.copying" = "复制中";
+"queue.state.paused" = "已暂停";
+"queue.state.sent" = "已发送";
+"queue.state.failed" = "失败";
+"queue.state.cancelled" = "已取消";
+"queue.help.pause" = "暂停此项 / 重新开始";
+"queue.help.up" = "上移（仅限排队项）";
+"queue.help.down" = "下移（仅限排队项）";
+"queue.help.remove" = "从队列移除（正在进行的下载会被取消，可恢复）";
+"queue.help.retry" = "立即重新发送此项（下一个）";
+"queue.retryTitle" = "⟳ 重新安装";
+"queue.pauseAll" = "⏸ 全部暂停";
+"queue.resumeAll" = "▶ 全部恢复";
+"queue.verified" = "已校验 ✓";
+
+/* MARK: - 连接 / 状态（AppModel） */
+"conn.noNetwork" = "没有网络适配器 — 请检查网线/Wi-Fi。";
+"conn.dotNoNetwork" = "○ 无网络";
+"conn.dotNoReceiver" = "● 无接收端";
+"conn.dotConnectedBusy" = "● 已连接（忙碌）";
+"conn.dotConnected" = "● 已连接";
+"conn.dotTesting" = "测试中…";
+"conn.dotConnectedPS4" = "● 已连接（PS4 %@）";
+"conn.dotNoConnection" = "● 未连接";
+"status.testing" = "正在测试 %@:12800…";
+"status.connected" = "已连接 — %@ 在线，地址 %@。";
+"status.noConnection" = "无法连接 — %@:12800/9090 无响应。pkg-receiver 或 GoldHEN Payload Server 是否在运行？";
+"status.lookingForConsole" = "正在查找主机…";
+"status.consoleAt" = "主机地址为 %@。";
+"status.noConsoleLan" = "局域网中未找到主机 — 请在主机上运行 pkg-receiver（见指南）。";
+"status.noReceiverAt" = "%@ 处无接收端 — pkg-receiver 是否在运行？（见指南）";
+"status.kept" = "保留 %@。";
+"status.switched" = "已切换至主机 %@。";
+"status.addFolderFirst" = "请先添加文件夹或驱动器。";
+"status.scanning" = "正在扫描…";
+"status.noPkgFound" = "未找到 PKG 文件。";
+"status.gamesInLibrary" = "媒体库中有 %d 个游戏。";
+"status.dropPkg" = "拖入 .pkg 文件（会直接进入队列）或游戏文件夹。";
+"status.reading" = "正在读取 %@…";
+"status.couldNotRead" = "无法读取 %@。";
+"status.fileServerFailed" = "文件服务器启动失败（端口 9898 被占用 — 是否有另一个发送程序在运行？）：%@";
+"status.shared" = "已共享媒体库：%@ — 请在主机浏览器中打开它（pkg 远程安装）。";
+"status.unshared" = "已取消共享。";
+"status.serving" = "正在向主机提供文件…";
+"status.sharedStop" = "已共享 ✓ — 点击停止";
+"status.shareToConsole" = "共享到主机";
+"status.noPkgSelection" = "所选内容中没有 .pkg — 请选择要安装的 PKG 文件。";
+"status.alreadyInQueue" = "已在队列中 — 对停止的项请使用“恢复”。";
+"status.queuedMore" = "又加入 %d 个到队列 — 主机会按顺序接收。";
+"status.resuming" = "正在恢复…";
+"status.nothingToAdd" = "没有可添加的项。";
+"status.installingPkg" = "正在安装 PKG：%@";
+"status.pushFailed" = "发送失败：%@";
+"status.ps4PushFailed" = "PS4 %@ 发送失败：%@";
+"status.pausedAll" = "已暂停 — 点击 ▶ 全部恢复以继续。";
+"status.resumeAll" = "正在恢复…";
+"status.removedFromQueue" = "已从队列移除。";
+"status.removed" = "已移除。";
+"status.cancelled" = "已取消 — 在其行中恢复以重新入队。";
+"status.onlyQueuedReorder" = "只有排队项可以重新排序（此项已在主机上）。";
+"status.copyCancelled" = "主机上复制已取消 — 保留部分文件，再次“复制镜像”可续传。";
+"status.clearedFinished" = "已清除已完成的行。";
+"status.beacon" = "来自 %@ 的信标…";
+"status.noImageSelection" = "所选内容中没有镜像 — 请选择 .exfat/.ffpkg/.ffpfsc 行（IMG 标记）。";
+"status.noConsoleAddress" = "没有主机地址 — 请在顶部设置（测试以验证）。";
+"status.noPcAddress" = "未选择本机地址 — 请先在顶部选择。";
+"status.copyStarted" = "已开始复制 %d 个镜像 — 请留意主机通知。";
+"status.copyStartedPartial" = "已开始复制 %d/%d 个镜像，%d 个失败。";
+"status.copying" = "正在复制 %@ 到 homebrew…";
+"status.copyFailed" = "复制 %@ 失败：%@";
+"status.alreadyThere" = "%@ 已经存在 — 覆盖吗？";
+"status.skipped" = "已跳过 %@。";
+"status.pullUnknownEndpoint" = "主机运行的是旧版 payload — 请先发送最新的 ELF。";
+"status.pullTestBuild" = "主机运行的是 TESTONLY payload — 请使用正式 ELF。";
+"status.pullBadUrl" = "接收端拒绝了 url/path（%@）。";
+"status.pauseSignalFailed" = "暂停信号失败 — 接收端是否可达？";
+"status.consoleNeverPulled" = "主机从未拉取该文件";
+"status.downloadStalled" = "主机下载卡住 — ⟳ 重新安装以重试";
+"status.paused" = "已暂停";
+"status.waiting" = "等待中…";
+"status.pushing" = "正在推送…";
+"status.pushingViaPs4" = "正在通过 PS4 推送…";
+"status.rpiSilent" = "RPI 无响应 — 尝试 GoldHEN…";
+"status.queuedOnConsole" = "已在主机排队…";
+"status.queuedOnPs4" = "已在 PS4 排队（%@）…";
+"status.sentToConsoleQueue" = "已发送到主机队列";
+"status.resumingRow" = "正在恢复…（也请在主机上恢复）";
+"status.waitingRetry" = "等待中…（下一个重试）";
+"status.stalledCopy" = "卡住 — 重试“复制镜像”";
+"status.stoppedPartial" = "已停止 — 保留部分文件，再次“复制镜像”可续传";
+"status.sizeMismatch" = "大小不匹配（主机 %@）— 重试";
+"status.notOnConsole" = "不在主机上 — 请检查主机通知，重试";
+"status.finishing" = "正在完成…";
+"status.stalledEta" = "卡住…";
+"status.calculating" = "计算中…";
+"status.consolePulling" = "主机正在拉取…";
+"status.queueFinished" = "队列已完成。";
+"status.addedToLibrary" = "%@ 已添加到媒体库。";
+"status.etaFinished" = "正在完成…";
+"status.etaStalled" = "卡住…";
+"status.etaCalculating" = "计算中…";
+
+/* MARK: - 平台 / 排序选项 */
+"platform.all" = "全部";
+"platform.ps5" = "PS5";
+"platform.ps4" = "PS4";
+"sort.name" = "名称";
+"sort.sizeDown" = "大小 ↓";
+"sort.sizeUp" = "大小 ↑";
+
+/* MARK: - 关于对话框 */
+"about.title" = "PKG Sender %@";
+"about.by" = "by Loopayeh（作者）";
+"about.tagline" = "通过局域网安装 PKG。";
+"about.launchAtLogin" = "登录时启动";
+"about.launchHelp" = "macOS 13+ 使用 SMAppService；macOS 12 回退到 LaunchAgent（仅会处理 com.local.pkgsendermac.plist）";
+"about.receiver" = "pkg-receiver.elf";
+"about.showResources" = "显示资源";
+"about.close" = "关闭";
+
+/* MARK: - 指南对话框 */
+"guide.title" = "设置";
+"guide.step1" = "1. 越狱您的 PS5 并发送 pkg-receiver.elf — 它已内置在本应用中（见下方“显示资源”）。";
+"guide.step2" = "2. 等待主机提示“正在 12800 端口监听”。";
+"guide.step3" = "3. 将主机与本 Mac 接入同一网络（Wi-Fi 或局域网）。主机无需联网。";
+"guide.step4" = "4. 打开 PKG Sender — 它会自动找到主机，并在地址变化时询问是否切换。";
+"guide.step5" = "5. 点击“扫描驱动器…”（或“+ 添加文件夹”，或直接把文件/文件夹拖入窗口），选择游戏，点击“发送 PKG”。";
+"guide.step6" = "6. 更新和 DLC 会与其基础游戏绑定（相同 title id，例如 PPSA12345 — 不同地区代码会分开显示）。点击卡片上的 🔗 标记可仅显示该系列。";
+"guide.lanTitle" = "局域网连接";
+"guide.lanIntro" = "PKG Sender 通过两种方式连接您的 PS5/PS4。";
+"guide.method1Title" = "方式一 — 通过路由器";
+"guide.method1" = "最简单的方式 — 将本 Mac 和主机都连接到同一台路由器。无需手动设置 IP。";
+"guide.method2Title" = "方式二 — 直连网线";
+"guide.method2" = "用一根网线将 Mac 直连主机，不经过路由器。在没有 DHCP 时，需要在两端手动设置静态地址：";
+"guide.method2diagram" = "Mac ───── 以太网 ───── PS5/PS4\n192.168.10.1          192.168.10.2";
+"guide.method2step1" = "1) Mac — 系统设置 → 网络 → 以太网 → 详细信息 → TCP/IP：手动，192.168.10.1，子网掩码 255.255.255.0，网关/DNS 留空。";
+"guide.method2step2" = "2) 主机 — 网络设置 → 手动 IP：192.168.10.2，掩码 255.255.255.0，网关和 DNS 留空。";
+"guide.method2step3" = "3) 在主机上启动 PKG Receiver，然后在 Mac 上启动 PKG Sender — 选择本机地址，输入主机 IP，点击“测试”。";
+"guide.directCableWarn" = "⚠ 切勿让直连网线保持自动 IP：Mac 或主机会回退到 169.254.x.x，而 PKG Sender 会刻意忽略该地址。如果插了网线却找不到主机，几乎都是这个原因。";
+"guide.ps4TipTitle" = "PS4 提速提示";
+"guide.ps4Tip" = "在 PS4 上使用 Remote Package Installer（flatz，12800 端口）— 约 75 MB/s。GoldHEN 路径上限约 50 MB/s，因为主机会逐个获取分片；该上限在主机侧，而非您的网络。PKG Sender 会自动优先尝试 RPI。";
+"guide.troubleTitle" = "故障排除";
+"guide.trouble.noReceiver" = "• “无接收端” — ELF 未在主机上运行。请重新发送。";
+"guide.trouble.noAdapter" = "• “无网络适配器” — 本 Mac 没有活动的局域网/Wi-Fi。请检查网线或 Wi-Fi。";
+"guide.trouble.pushNoStart" = "• 发送成功但下载始终不开始 — 请在系统设置 → 网络 → 防火墙中允许 PKG Sender 的入站连接（本地服务器监听 TCP 9898）。";
+"guide.trouble.ipChanges" = "• 主机 IP 经常变化（DHCP）— 只需重新打开应用，它会提供新地址。";
+"guide.close" = "关闭";
+
+/* MARK: - 更新对话框 */
+"about.autoUpdate" = "自动检查更新";
+"about.autoUpdateHelp" = "启动时检查 GitHub 是否有新版本。离线电脑可关闭此项。";
+"about.version" = "版本";
+"about.checkUpdate" = "立即检查";
+"about.updateAvailable" = "发现新版本：%@";
+"about.viewUpdate" = "查看更新";
+"about.upToDate" = "已是最新版本";
+"menu.checkUpdate" = "检查更新…";
+"statusbar.update" = "更新 ✨";
+"statusbar.updateHelp" = "有新版本可用 — 打开发布页面";
+
+/* MARK: - 切换主机对话框 */
+"switch.title" = "在另一个地址上发现了可连接的主机。";
+"switch.detail" = "已保存：%@\n发现：%@（%@）";
+"switch.question" = "切换到它吗？";
+"switch.keepMine" = "保留我的";
+"switch.switch" = "切换";
+
+/* MARK: - 复制选择对话框 */
+"copy.titleComplete" = "已在主机上";
+"copy.titleExists" = "文件已在主机上";
+"copy.detail" = "%@\n主机：%@ / 本地：%@。";
+"copy.cancel" = "取消";
+"copy.resume" = "续传";
+"copy.overwrite" = "覆盖";
+
+/* MARK: - 语言菜单 */
+"lang.menu" = "语言";
+"lang.system" = "系统（自动）";
+
+/* MARK: - 面板 */
+"panel.addFolder" = "添加要扫描游戏的文件夹";
+"panel.scanDrives" = "选择要搜索 PKG 文件的磁盘";
+"panel.addPrompt" = "添加";
+"panel.scanPrompt" = "扫描";
+
+/* MARK: - 通知 */
+"notify.sentTitle" = "已发送到主机";

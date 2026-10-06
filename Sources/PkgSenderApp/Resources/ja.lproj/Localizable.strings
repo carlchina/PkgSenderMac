@@ -1,0 +1,283 @@
+/* PKG Sender — 日本語 */
+
+/* MARK: - ウィンドウとメニュー */
+"menu.about" = "PKG Sender について";
+"menu.library" = "ライブラリ";
+"menu.scanDrives" = "ドライブをスキャン…";
+"menu.addFolder" = "フォルダを追加…";
+"menu.scan" = "スキャン";
+"menu.selectNone" = "選択を解除";
+"menu.selectAll" = "すべて選択";
+"menu.invertSelection" = "選択を反転";
+"library.selectHelp" = "クリックで選択 · ⌘-クリックで追加 · ⇧-クリックで範囲 · ダブルクリックで送信";
+"menu.transfer" = "転送";
+"menu.sendPkg" = "PKG を送信";
+"menu.copyImages" = "イメージをコピー";
+"menu.clearDone" = "完了をクリア";
+"menu.console" = "コンソール";
+"menu.testConnection" = "接続をテスト";
+"menu.detectConsole" = "コンソールを検出";
+"menu.shareToConsole" = "コンソールと共有";
+"menu.stopSharing" = "共有を停止";
+"menu.ps4Sequential" = "PS4 コンソール（順次インストール）";
+"menu.view" = "表示";
+"menu.compact" = "コンパクト";
+"menu.hideDlc" = "DLC/アップデートを非表示";
+"menu.clearSearch" = "検索をクリア";
+"menu.guide" = "PKG Sender ガイド";
+
+/* MARK: - ヘッダー */
+"header.subtitle" = "LAN 経由で PKG をインストール";
+"header.consoleIp" = "コンソール IP";
+"header.pc" = "PC";
+"header.test" = "テスト";
+"header.detect" = "↻ 検出";
+"header.noLanAddress" = "LAN アドレスなし";
+"header.dotHelp" = "コンソールを再度検索";
+"header.pcHelp" = "自動検出された LAN アドレス — コンソールと同じネットワークの NIC を選択";
+
+/* MARK: - ツールバー */
+"toolbar.addFolder" = "+ フォルダを追加";
+"toolbar.addFolderHelp" = "PKG / イメージファイルを探すフォルダを選択 — 追加後すぐにスキャンを開始します";
+"toolbar.scanDrivesHelp" = "PKG ファイルを検索するディスクを選択";
+"toolbar.scan" = "スキャン";
+"toolbar.scanHelp" = "追加済みフォルダを再スキャン（ディスクの追加は「ライブラリ ▸ ドライブをスキャン…」）";
+"toolbar.searchPlaceholder" = "🔍 タイトル、ID を検索…";
+"toolbar.searchClear" = "全ライブラリに戻る";
+"toolbar.sendPkg" = "PKG を送信";
+"toolbar.sendPkgHelp" = "選択した .pkg ファイルをコンソールのダウンローダーに送信";
+"toolbar.copyImages" = "イメージをコピー";
+"toolbar.copyImagesHelp" = "選択したイメージファイル（.exfat/.ffpkg/.ffpfsc）をコンソールの /data/homebrew にコピー";
+"toolbar.shareHelp" = "このライブラリをコンソールのブラウザに表示（pkg リモートインストールページがこの PC から一覧とカバーを取得）";
+"toolbar.pauseAllHelp" = "すべてを一時停止（再開可能）— 「すべて再開」に切り替わります";
+"toolbar.clearDoneHelp" = "完了した行のみ削除 — 進行中のダウンロードには影響しません";
+"toolbar.hideDlc" = "DLC/アップデートを非表示";
+"toolbar.hideDlcHelp" = "基本ゲームのみ表示 — カードの 🔗×N をクリックで更新/DLC を表示";
+"toolbar.sortHelp" = "ライブラリを並べ替え";
+
+/* MARK: - ステータスバー */
+"statusbar.guide" = "ガイド";
+"statusbar.guideHelp" = "セットアップマニュアル";
+"statusbar.about" = "♥ について";
+"statusbar.aboutHelp" = "PKG Sender について — サポートリンク";
+
+/* MARK: - コンパクトバー */
+"compact.expand" = "展開";
+
+/* MARK: - ライブラリパネル */
+"library.showAll" = "すべて表示 ✕";
+"library.showAllHelp" = "検索をクリア — 全ライブラリに戻る";
+"library.gamesInFamilies" = "ゲーム %d 個、%d ファミリー（PS5 %d • PS4 %d）";
+"library.ps5Games" = "PS5 ゲーム %d 個";
+"library.ps4Games" = "PS4 ゲーム %d 個";
+"library.selected" = "• %d 個選択中";
+"library.filterMatches" = "🔍 「%@」で絞り込み — %d / %d 件を表示";
+"library.noMatches" = "🔍 「%@」に一致するものはありません";
+"library.noGamesYet" = "ゲームはまだありません";
+"library.state.scanning" = "スキャン中…";
+"library.state.title" = "スキャン失敗";
+"library.state.emptyDetail" = "ここにゲームファイルが見つかりません。別のフォルダやディスクをお試しください。";
+"library.emptyAddFirst" = "まずフォルダかドライブを追加してください。";
+"library.emptyPressScan" = "「スキャン」を押してライブラリを読み込みます。";
+"library.emptyNoFiles" = "ここにゲームファイルが見つかりません。別のフォルダやディスクをお試しください。";
+"library.badge.dlc" = "DLC";
+"library.familyChip" = "🔗×%d";
+
+/* MARK: - キューパネル */
+"queue.title" = "送信キュー";
+"queue.compact" = "コンパクト";
+"queue.compactHelp" = "ゲームライブラリを隠す — 送信キューのみ表示";
+"queue.ps4console" = "PS4 コンソール";
+"queue.ps4consoleHelp" = "対象が PS4 の場合にチェック — ゲームは厳密に 1 つずつインストール（PS5 はネイティブでキュー対応）";
+"queue.empty" = "キューは空です";
+"queue.summary" = "%d/%d 送信済み";
+"queue.summaryFailed" = "%d/%d 送信済み、%d 件失敗";
+"queue.state.queued" = "待機中";
+"queue.state.sending" = "送信中";
+"queue.state.copying" = "コピー中";
+"queue.state.paused" = "一時停止";
+"queue.state.sent" = "送信済み";
+"queue.state.failed" = "失敗";
+"queue.state.cancelled" = "キャンセル";
+"queue.help.pause" = "この項目を一時停止 / 再開";
+"queue.help.up" = "上へ移動（待機中のみ）";
+"queue.help.down" = "下へ移動（待機中のみ）";
+"queue.help.remove" = "キューから削除（進行中のダウンロードはキャンセルされ、再開可能）";
+"queue.help.retry" = "すぐにこの項目を再送信（次の順番）";
+"queue.retryTitle" = "⟳ 再インストール";
+"queue.pauseAll" = "⏸ すべて一時停止";
+"queue.resumeAll" = "▶ すべて再開";
+"queue.verified" = "検証済み ✓";
+
+/* MARK: - 接続 / ステータス（AppModel） */
+"conn.noNetwork" = "ネットワークアダプタがありません — ケーブル/Wi-Fi を確認してください。";
+"conn.dotNoNetwork" = "○ ネットワークなし";
+"conn.dotNoReceiver" = "● 受信側なし";
+"conn.dotConnectedBusy" = "● 接続済み（処理中）";
+"conn.dotConnected" = "● 接続済み";
+"conn.dotTesting" = "テスト中…";
+"conn.dotConnectedPS4" = "● 接続済み（PS4 %@）";
+"conn.dotNoConnection" = "● 未接続";
+"status.testing" = "%@:12800 をテスト中…";
+"status.connected" = "接続済み — %@ はオンラインです（%@）。";
+"status.noConnection" = "接続できません — %@:12800/9090 から応答がありません。pkg-receiver または GoldHEN Payload Server は起動していますか？";
+"status.lookingForConsole" = "コンソールを探しています…";
+"status.consoleAt" = "コンソールのアドレスは %@ です。";
+"status.noConsoleLan" = "LAN にコンソールが見つかりません — コンソールで pkg-receiver を実行してください（ガイド参照）。";
+"status.noReceiverAt" = "%@ に受信側がありません — pkg-receiver は起動していますか？（ガイド参照）";
+"status.kept" = "%@ を維持しました。";
+"status.switched" = "コンソール %@ に切り替えました。";
+"status.addFolderFirst" = "まずフォルダかドライブを追加してください。";
+"status.scanning" = "スキャン中…";
+"status.noPkgFound" = "PKG ファイルが見つかりません。";
+"status.gamesInLibrary" = "ライブラリにゲームが %d 個あります。";
+"status.dropPkg" = ".pkg ファイルをドロップすると直接キューへ、ゲームフォルダも可。";
+"status.reading" = "%@ を読み込み中…";
+"status.couldNotRead" = "%@ を読み込めませんでした。";
+"status.fileServerFailed" = "ファイルサーバーの起動に失敗しました（ポート 9898 が使用中 — 別の送信アプリが動いていませんか？）：%@";
+"status.shared" = "ライブラリを共有しました：%@ — コンソールのブラウザで開いてください（pkg リモートインストール）。";
+"status.unshared" = "共有を停止しました。";
+"status.serving" = "コンソールへ配信中…";
+"status.sharedStop" = "共有中 ✓ — クリックで停止";
+"status.shareToConsole" = "コンソールと共有";
+"status.noPkgSelection" = "選択に .pkg がありません — インストールする PKG ファイルを選択してください。";
+"status.alreadyInQueue" = "すでにキューにあります — 停止中の項目は「再開」を使用してください。";
+"status.queuedMore" = "あと %d 件をキューに追加 — コンソールが順に受け取ります。";
+"status.resuming" = "再開中…";
+"status.nothingToAdd" = "追加するものがありません。";
+"status.installingPkg" = "PKG をインストール中：%@";
+"status.pushFailed" = "送信失敗：%@";
+"status.ps4PushFailed" = "PS4 %@ の送信失敗：%@";
+"status.pausedAll" = "一時停止しました — ▶ すべて再開を押して続行。";
+"status.resumeAll" = "再開中…";
+"status.removedFromQueue" = "キューから削除しました。";
+"status.removed" = "削除しました。";
+"status.cancelled" = "キャンセルしました — その行から再開して再キューできます。";
+"status.onlyQueuedReorder" = "並べ替えできるのは待機中の項目のみです（この項目はすでにコンソール上にあります）。";
+"status.copyCancelled" = "コンソールでのコピーをキャンセルしました — 部分ファイルを保持、再度「イメージをコピー」で再開できます。";
+"status.clearedFinished" = "完了した行をクリアしました。";
+"status.beacon" = "%@ からのビーコン…";
+"status.noImageSelection" = "選択にイメージがありません — .exfat/.ffpkg/.ffpfsc の行（IMG バッジ）を選択してください。";
+"status.noConsoleAddress" = "コンソールアドレスがありません — 上部で設定してください（テストで確認）。";
+"status.noPcAddress" = "PC アドレスが選択されていません — まず上部で選択してください。";
+"status.copyStarted" = "イメージ %d 件のコピーを開始しました — コンソールの通知にご注意ください。";
+"status.copyStartedPartial" = "イメージ %d/%d 件のコピーを開始、%d 件失敗。";
+"status.copying" = "%@ を homebrew にコピー中…";
+"status.copyFailed" = "%@ のコピー失敗：%@";
+"status.alreadyThere" = "%@ はすでに存在します — 上書きしますか？";
+"status.skipped" = "%@ をスキップしました。";
+"status.pullUnknownEndpoint" = "コンソールは古い payload を実行中 — 最新の ELF を先に送信してください。";
+"status.pullTestBuild" = "コンソールは TESTONLY payload を実行中 — 通常の ELF を使用してください。";
+"status.pullBadUrl" = "受信側が url/path を拒否しました（%@）。";
+"status.pauseSignalFailed" = "一時停止シグナル失敗 — 受信側に到達していますか？";
+"status.consoleNeverPulled" = "コンソールが取得しませんでした";
+"status.downloadStalled" = "コンソールでのダウンロードが停滞 — ⟳ 再インストールして再試行";
+"status.paused" = "一時停止";
+"status.waiting" = "待機中…";
+"status.pushing" = "プッシュ中…";
+"status.pushingViaPs4" = "PS4 経由でプッシュ中…";
+"status.rpiSilent" = "RPI から応答なし — GoldHEN を試します…";
+"status.queuedOnConsole" = "コンソールでキュー済み…";
+"status.queuedOnPs4" = "PS4 でキュー済み（%@）…";
+"status.sentToConsoleQueue" = "コンソールのキューに送信済み";
+"status.resumingRow" = "再開中…（コンソール側でも再開してください）";
+"status.waitingRetry" = "待機中…（次で再試行）";
+"status.stalledCopy" = "停滞 — 「イメージをコピー」を再試行";
+"status.stoppedPartial" = "停止しました — 部分ファイルを保持、再度「イメージをコピー」で再開可能";
+"status.sizeMismatch" = "サイズ不一致（コンソール %@）— 再試行";
+"status.notOnConsole" = "コンソールにありません — コンソールの通知を確認し、再試行";
+"status.finishing" = "完了中…";
+"status.stalledEta" = "停滞…";
+"status.calculating" = "計算中…";
+"status.consolePulling" = "コンソールが取得中…";
+"status.queueFinished" = "キューが完了しました。";
+"status.addedToLibrary" = "%@ をライブラリに追加しました。";
+"status.etaFinished" = "完了中…";
+"status.etaStalled" = "停滞…";
+"status.etaCalculating" = "計算中…";
+
+/* MARK: - プラットフォーム / 並べ替え */
+"platform.all" = "すべて";
+"platform.ps5" = "PS5";
+"platform.ps4" = "PS4";
+"sort.name" = "名前";
+"sort.sizeDown" = "サイズ ↓";
+"sort.sizeUp" = "サイズ ↑";
+
+/* MARK: - バージョン情報ダイアログ */
+"about.title" = "PKG Sender %@";
+"about.by" = "by Loopayeh（作者）";
+"about.tagline" = "LAN 経由で PKG をインストール。";
+"about.launchAtLogin" = "ログイン時に起動";
+"about.launchHelp" = "macOS 13+ は SMAppService を使用；macOS 12 は LaunchAgent にフォールバック（com.local.pkgsendermac.plist のみを扱います）";
+"about.receiver" = "pkg-receiver.elf";
+"about.showResources" = "リソースを表示";
+"about.close" = "閉じる";
+
+/* MARK: - ガイドダイアログ */
+"guide.title" = "セットアップ";
+"guide.step1" = "1. PS5 を脱獄し pkg-receiver.elf を送信 — 本アプリに同梱されています（下の「リソースを表示」参照）。";
+"guide.step2" = "2. コンソールに「ポート 12800 で待機中」と表示されるまで待ちます。";
+"guide.step3" = "3. コンソールとこの Mac を同じネットワーク（Wi-Fi または LAN）に接続します。コンソールのインターネット接続は不要です。";
+"guide.step4" = "4. PKG Sender を開く — 自動でコンソールを見つけ、アドレスが変わったら切り替えを尋ねます。";
+"guide.step5" = "5. 「ドライブをスキャン…」（または「+ フォルダを追加」、あるいはファイル/フォルダをウィンドウにドロップ）し、ゲームを選んで「PKG を送信」を押します。";
+"guide.step6" = "6. アップデートと DLC は基本ゲームにひも付きます（同じ title id、例 PPSA12345 — 異なる地域コードは別表示）。カードの 🔗 マークをクリックでそのファミリーのみ表示。";
+"guide.lanTitle" = "LAN 接続";
+"guide.lanIntro" = "PKG Sender は 2 つの方法で PS5/PS4 に接続します。";
+"guide.method1Title" = "方法 1 — ルーター経由";
+"guide.method1" = "最も簡単な方法 — Mac とコンソールを同じルーターに接続します。IP の手動設定は不要です。";
+"guide.method2Title" = "方法 2 — 直接ケーブル";
+"guide.method2" = "ルーターを介さずイーサネットケーブルで Mac とコンソールを直結します。DHCP がない場合は両端で静的アドレスを設定：";
+"guide.method2diagram" = "Mac ───── イーサネット ───── PS5/PS4\n192.168.10.1          192.168.10.2";
+"guide.method2step1" = "1) Mac — システム設定 → ネットワーク →  Ethernet → 詳細 → TCP/IP：手動、192.168.10.1、サブネットマスク 255.255.255.0、ゲートウェイ/DNS は空白。";
+"guide.method2step2" = "2) コンソール — ネットワーク設定 → 手動 IP：192.168.10.2、マスク 255.255.255.0、ゲートウェイと DNS は空白。";
+"guide.method2step3" = "3) コンソールで PKG Receiver を起動し、その後 Mac で PKG Sender を起動 — PC アドレスを選択し、コンソール IP を入力して「テスト」を押します。";
+"guide.directCableWarn" = "⚠ 直接ケーブルを自動 IP のままにしないでください：Mac またはコンソールが 169.254.x.x にフォールバックする場合があり、PKG Sender は意図的に無視します。ケーブルを挿しても見つからない場合、ほぼいつもこれが原因です。";
+"guide.ps4TipTitle" = "PS4 高速化のヒント";
+"guide.ps4Tip" = "PS4 では Remote Package Installer（flatz、ポート 12800）を使用 — 約 75 MB/s。GoldHEN 経路はコンソールが断片を 1 つずつ取得するため約 50 MB/s が上限です。この上限はコンソール側であり、ネットワークではありません。PKG Sender は自動的に RPI を優先します。";
+"guide.troubleTitle" = "トラブルシューティング";
+"guide.trouble.noReceiver" = "• 「受信側なし」 — ELF がコンソールで実行されていません。再送信してください。";
+"guide.trouble.noAdapter" = "• 「ネットワークアダプタなし」 — この Mac にアクティブな LAN/Wi-Fi がありません。ケーブルや Wi-Fi を確認してください。";
+"guide.trouble.pushNoStart" = "• 送信は通るのにダウンロードが始まらない — システム設定 → ネットワーク → ファイアウォールで PKG Sender の入接続を許可してください（ローカルサーバーは TCP 9898 をリッスン）。";
+"guide.trouble.ipChanges" = "• コンソール IP が頻繁に変わる（DHCP）— アプリを再オープンするだけで新しいアドレスを提示します。";
+"guide.close" = "閉じる";
+
+/* MARK: - アップデートダイアログ */
+"about.autoUpdate" = "自動でアップデートを確認";
+"about.autoUpdateHelp" = "起動時に GitHub で新しいリリースを確認します。オフラインの PC はオフにできます。";
+"about.version" = "バージョン";
+"about.checkUpdate" = "今すぐ確認";
+"about.updateAvailable" = "アップデートあり：%@";
+"about.viewUpdate" = "アップデートを見る";
+"about.upToDate" = "最新です";
+"menu.checkUpdate" = "アップデートを確認…";
+"statusbar.update" = "アップデート ✨";
+"statusbar.updateHelp" = "新しいバージョンがあります — リリースページを開く";
+
+/* MARK: - コンソール切り替えダイアログ */
+"switch.title" = "別のアドレスで到達可能なコンソールがあります。";
+"switch.detail" = "保存済み：%@\n検出：%@（%@）";
+"switch.question" = "それに切り替えますか？";
+"switch.keepMine" = "現在のまま";
+"switch.switch" = "切り替え";
+
+/* MARK: - コピー選択ダイアログ */
+"copy.titleComplete" = "すでにコンソール上にあります";
+"copy.titleExists" = "ファイルはすでにコンソール上にあります";
+"copy.detail" = "%@\nコンソール：%@ / ローカル：%@。";
+"copy.cancel" = "キャンセル";
+"copy.resume" = "再開";
+"copy.overwrite" = "上書き";
+
+/* MARK: - 言語メニュー */
+"lang.menu" = "言語";
+"lang.system" = "システム（自動）";
+
+/* MARK: - パネル */
+"panel.addFolder" = "ゲームをスキャンするフォルダを追加";
+"panel.scanDrives" = "PKG ファイルを検索するディスクを選択";
+"panel.addPrompt" = "追加";
+"panel.scanPrompt" = "スキャン";
+
+/* MARK: - 通知 */
+"notify.sentTitle" = "コンソールへ送信完了";

@@ -60,3 +60,13 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+# --- PkgSenderMac specifics ---
+# App build output (ad-hoc signed .app + icon scratch)
+build/
+
+# Temporary verification tools (compiled binaries + scratch sources)
+check/
+
+# macOS metadata
+.DS_Store

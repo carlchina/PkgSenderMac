@@ -1,0 +1,283 @@
+/* PKG Sender — English (base) */
+
+/* MARK: - Window & menus */
+"menu.about" = "About PKG Sender";
+"menu.library" = "Library";
+"menu.scanDrives" = "Scan drives…";
+"menu.addFolder" = "Add folder…";
+"menu.scan" = "Scan";
+"menu.selectNone" = "Select none";
+"menu.selectAll" = "Select all";
+"menu.invertSelection" = "Invert selection";
+"library.selectHelp" = "Click to select · ⌘-click to add · ⇧-click for a range · double-click to send";
+"menu.transfer" = "Transfer";
+"menu.sendPkg" = "Send PKG";
+"menu.copyImages" = "Copy images";
+"menu.clearDone" = "Clear done";
+"menu.console" = "Console";
+"menu.testConnection" = "Test connection";
+"menu.detectConsole" = "Detect console";
+"menu.shareToConsole" = "Share to console";
+"menu.stopSharing" = "Stop sharing";
+"menu.ps4Sequential" = "PS4 console (sequential)";
+"menu.view" = "View";
+"menu.compact" = "Compact";
+"menu.hideDlc" = "Hide DLC/updates";
+"menu.clearSearch" = "Clear search";
+"panel.addFolder" = "Add a folder to scan for games";
+"panel.scanDrives" = "Pick volume(s) to search for PKG files";
+"panel.addPrompt" = "Add";
+"panel.scanPrompt" = "Scan";
+"menu.guide" = "PKG Sender guide";
+
+/* MARK: - Header bar */
+"header.subtitle" = "PKG install over LAN";
+"header.consoleIp" = "console IP";
+"header.pc" = "PC";
+"header.test" = "Test";
+"header.detect" = "↻ Detect";
+"header.noLanAddress" = "no LAN address";
+"header.dotHelp" = "Look for the console again";
+"header.pcHelp" = "Auto-detected LAN address — pick the NIC on the console's network";
+
+/* MARK: - Toolbar */
+"toolbar.addFolder" = "+ Add folder";
+"toolbar.addFolderHelp" = "Pick a folder to search for PKG/image files — scanning starts automatically";
+"toolbar.scanDrivesHelp" = "Pick volume(s) to search for PKG files";
+"toolbar.scan" = "Scan";
+"toolbar.scanHelp" = "Rescan the added folders (to add a disk, use Library ▸ Scan drives…)";
+"toolbar.searchPlaceholder" = "🔍 Search title, ID…";
+"toolbar.searchClear" = "Back to full library";
+"toolbar.sendPkg" = "Send PKG";
+"toolbar.sendPkgHelp" = "Send selected .pkg files to the console downloader";
+"toolbar.copyImages" = "Copy images";
+"toolbar.copyImagesHelp" = "Copy selected image files (.exfat/.ffpkg/.ffpfsc) to /data/homebrew on the console";
+"toolbar.shareHelp" = "Show this library in the console browser (pkg remote installer page pulls the list + covers from this PC)";
+"toolbar.pauseAllHelp" = "Pause everything (resumable) — becomes Resume all";
+"toolbar.clearDoneHelp" = "Remove finished rows only — never touches active downloads";
+"toolbar.hideDlc" = "Hide DLC/updates";
+"toolbar.hideDlcHelp" = "Show only base games — click 🔗×N on a card to see its updates/DLCs";
+"toolbar.sortHelp" = "Sort library";
+
+/* MARK: - Status bar */
+"statusbar.guide" = "Guide";
+"statusbar.guideHelp" = "Setup manual";
+"statusbar.about" = "♥ About";
+"statusbar.aboutHelp" = "About PKG Sender — support links";
+
+/* MARK: - Compact bar */
+"compact.expand" = "Expand";
+
+/* MARK: - Library panel */
+"library.showAll" = "Show all ✕";
+"library.showAllHelp" = "Clear the search — back to the full library";
+"library.gamesInFamilies" = "%d games in %d families (%d PS5 • %d PS4)";
+"library.ps5Games" = "%d PS5 games";
+"library.ps4Games" = "%d PS4 games";
+"library.selected" = "• %d selected";
+"library.filterMatches" = "🔍 Filtered by “%@” — %d of %d shown";
+"library.noMatches" = "🔍 No matches for “%@”";
+"library.noGamesYet" = "No games yet";
+"library.state.scanning" = "Scanning…";
+"library.state.title" = "Scan failed";
+"library.state.emptyDetail" = "No game files found here. Try another folder or volume.";
+"library.emptyAddFirst" = "Add a folder or drives first.";
+"library.emptyPressScan" = "Press Scan to load the library.";
+"library.emptyNoFiles" = "No game files found here. Try another folder or volume.";
+"library.badge.dlc" = "DLC";
+"library.familyChip" = "🔗×%d";
+
+/* MARK: - Queue panel */
+"queue.title" = "Send queue";
+"queue.compact" = "Compact";
+"queue.compactHelp" = "Hide the games library — show only the send queue";
+"queue.ps4console" = "PS4 console";
+"queue.ps4consoleHelp" = "Tick when the target is a PS4: games install strictly one-by-one (PS5 queues natively)";
+"queue.empty" = "Queue is empty";
+"queue.summary" = "%d/%d sent";
+"queue.summaryFailed" = "%d/%d sent, %d failed";
+"queue.state.queued" = "queued";
+"queue.state.sending" = "sending";
+"queue.state.copying" = "copying";
+"queue.state.paused" = "paused";
+"queue.state.sent" = "sent";
+"queue.state.failed" = "failed";
+"queue.state.cancelled" = "cancelled";
+"queue.help.pause" = "Pause this item / start it again";
+"queue.help.up" = "Move up (queued items only)";
+"queue.help.down" = "Move down (queued items only)";
+"queue.help.remove" = "Remove from queue (an active download is cancelled, resumable)";
+"queue.help.retry" = "Push this one again right away (next in line)";
+"queue.retryTitle" = "⟳ Reinstall";
+
+/* MARK: - Connection / status (AppModel) */
+"conn.noNetwork" = "No network adapter — check cable/Wi-Fi.";
+"conn.dotNoNetwork" = "○ No network";
+"conn.dotNoReceiver" = "● No receiver";
+"conn.dotConnectedBusy" = "● Connected (busy)";
+"conn.dotConnected" = "● Connected";
+"conn.dotTesting" = "Testing…";
+"conn.dotConnectedPS4" = "● Connected (PS4 %@)";
+"conn.dotNoConnection" = "● No connection";
+"status.testing" = "Testing %@:12800…";
+"status.connected" = "Connected — %@ is online at %@.";
+"status.noConnection" = "No connection — nothing answers at %@:12800/9090. Is pkg-receiver or GoldHEN Payload Server running?";
+"status.lookingForConsole" = "Looking for console…";
+"status.consoleAt" = "Console at %@.";
+"status.noConsoleLan" = "No console on the LAN — run pkg-receiver on the console (see Guide).";
+"status.noReceiverAt" = "No receiver at %@ — is pkg-receiver running? (see Guide).";
+"status.kept" = "Kept %@.";
+"status.switched" = "Switched to console at %@.";
+"status.addFolderFirst" = "Add a folder or drives first.";
+"status.scanning" = "Scanning…";
+"status.noPkgFound" = "No PKG files found.";
+"status.gamesInLibrary" = "%d games in library.";
+"status.dropPkg" = "Drop .pkg files (they go straight to the queue) or game folders.";
+"status.reading" = "Reading %@…";
+"status.couldNotRead" = "Could not read %@.";
+"status.fileServerFailed" = "File server failed (port 9898 busy — another sender running?): %@";
+"status.shared" = "Library shared: %@ — open it from the console browser (pkg remote installer).";
+"status.unshared" = "Library unshared.";
+"status.serving" = "Serving to console…";
+"status.sharedStop" = "Shared ✓ — click to stop";
+"status.shareToConsole" = "Share to console";
+"status.noPkgSelection" = "No .pkg in the selection — pick PKG files to install.";
+"status.alreadyInQueue" = "Already in queue — use Resume on its row for stopped items.";
+"status.queuedMore" = "Queued %d more — console takes them in order.";
+"status.resuming" = "Resuming…";
+"status.nothingToAdd" = "Nothing to add.";
+"status.installingPkg" = "Installing PKG: %@";
+"status.pushFailed" = "Push failed: %@";
+"status.ps4PushFailed" = "PS4 %@ push failed: %@";
+"status.pausedAll" = "Paused — press ▶ Resume all to continue.";
+"status.resumeAll" = "Resuming…";
+"status.removedFromQueue" = "Removed from queue.";
+"status.removed" = "Removed.";
+"status.cancelled" = "Cancelled — resume it from its row to re-queue.";
+"status.onlyQueuedReorder" = "Only queued items can be reordered (this one is already on the console).";
+"status.copyCancelled" = "Copy cancelled on the console — partial kept, Copy again to resume.";
+"status.clearedFinished" = "Cleared finished rows.";
+"status.beacon" = "Beacon from %@…";
+"status.noImageSelection" = "No images in the selection — pick .exfat/.ffpkg/.ffpfsc rows (IMG badge).";
+"status.noConsoleAddress" = "No console address — set it at the top (Test to verify).";
+"status.noPcAddress" = "No PC address selected — pick it at the top first.";
+"status.copyStarted" = "Copy started for %d image(s) — watch the console notifications.";
+"status.copyStartedPartial" = "Copy started for %d/%d image(s), %d failed.";
+"status.copying" = "Copying %@ to homebrew…";
+"status.copyFailed" = "Copy failed for %@: %@";
+"status.alreadyThere" = "%@ is already there — overwrite?";
+"status.skipped" = "Skipped %@.";
+"status.pullUnknownEndpoint" = "console runs an old payload — send the newest ELF first.";
+"status.pullTestBuild" = "console runs the TESTONLY payload — use the normal ELF.";
+"status.pullBadUrl" = "receiver refused url/path (%@).";
+"status.pauseSignalFailed" = "Pause signal failed — is the receiver reachable?";
+"status.consoleNeverPulled" = "console never pulled it";
+"status.downloadStalled" = "download stalled on console — ⟳ Reinstall to retry";
+"status.paused" = "paused";
+"status.waiting" = "waiting…";
+"status.pushing" = "pushing…";
+"status.pushingViaPs4" = "pushing via PS4…";
+"status.rpiSilent" = "RPI silent — trying GoldHEN…";
+"status.queuedOnConsole" = "queued on console…";
+"status.queuedOnPs4" = "queued on PS4 (%@)…";
+"status.sentToConsoleQueue" = "sent to console queue";
+"status.resumingRow" = "resuming… (resume it on the console too)";
+"status.waitingRetry" = "waiting… (retrying next)";
+"status.stalledCopy" = "stalled — retry Copy images";
+"status.stoppedPartial" = "stopped — partial kept, Copy again to resume";
+"status.sizeMismatch" = "size mismatch (console %@) — retry";
+"status.notOnConsole" = "not on console — check console notification, retry";
+"status.finishing" = "finishing…";
+"status.stalledEta" = "stalled…";
+"status.calculating" = "calculating…";
+"status.consolePulling" = "console pulling…";
+"status.queueFinished" = "Queue finished.";
+"status.addedToLibrary" = "%@ added to the library.";
+"status.etaFinished" = "finishing…";
+"status.etaStalled" = "stalled…";
+"status.etaCalculating" = "calculating…";
+
+/* MARK: - Platform / sort options */
+"platform.all" = "All";
+"platform.ps5" = "PS5";
+"platform.ps4" = "PS4";
+"sort.name" = "Name";
+"sort.sizeDown" = "Size ↓";
+"sort.sizeUp" = "Size ↑";
+
+/* MARK: - About dialog */
+"about.title" = "PKG Sender %@";
+"about.by" = "by Loopayeh";
+"about.tagline" = "PKG install over LAN.";
+"about.launchAtLogin" = "Launch at login";
+"about.launchHelp" = "macOS 13+ uses SMAppService; macOS 12 falls back to a LaunchAgent (only com.local.pkgsendermac.plist is touched)";
+"about.receiver" = "pkg-receiver.elf";
+"about.showResources" = "Show resources";
+"about.close" = "Close";
+
+/* MARK: - Guide dialog */
+"guide.title" = "Setup";
+"guide.step1" = "1. Jailbreak your PS5 and send pkg-receiver.elf — it ships inside this app (Show resources below).";
+"guide.step2" = "2. Wait for the console toast “listening on port 12800”.";
+"guide.step3" = "3. Put the console on the same network as this Mac (Wi-Fi or LAN). No internet needed on the console.";
+"guide.step4" = "4. Open PKG Sender — it finds the console by itself and asks to switch if its address changed.";
+"guide.step5" = "5. Press Scan drives… (or + Add folder, or just drop files/folders onto the window), select games, press Send PKG.";
+"guide.step6" = "6. Updates and DLCs stay glued to their base game (same title id, e.g. PPSA12345 — different region codes stay separate). Click the 🔗 chip on a card to show only that family.";
+"guide.lanTitle" = "LAN connection";
+"guide.lanIntro" = "PKG Sender connects to your PS5/PS4 in two ways.";
+"guide.method1Title" = "Method 1 — Through a router";
+"guide.method1" = "The easiest option — connect both your Mac and console to the same router. No manual IP setup needed.";
+"guide.method2Title" = "Method 2 — Direct cable";
+"guide.method2" = "Mac straight to console with an Ethernet cable, no router. With no DHCP around, set static addresses on both ends:";
+"guide.method2diagram" = "Mac ───── Ethernet ───── PS5/PS4\n192.168.10.1          192.168.10.2";
+"guide.method2step1" = "1) Mac — System Settings → Network → Ethernet → Details → TCP/IP: Manual, 192.168.10.1, subnet mask 255.255.255.0, empty gateway/DNS.";
+"guide.method2step2" = "2) Console — Network settings → manual IP: 192.168.10.2, mask 255.255.255.0, gateway and DNS empty.";
+"guide.method2step3" = "3) Start the PKG Receiver on the console, then PKG Sender on the Mac — pick the PC address, type the console IP, press Test.";
+"guide.directCableWarn" = "⚠ Do NOT leave a direct cable on automatic IP: the Mac or the console may fall back to 169.254.x.x, which PKG Sender ignores on purpose. If the cable is in but nothing is found, this is almost always the cause.";
+"guide.ps4TipTitle" = "PS4 speed tip";
+"guide.ps4Tip" = "On PS4 use Remote Package Installer (flatz, port 12800) — about 75 MB/s. The GoldHEN path tops out near 50 MB/s because the console fetches pieces one-by-one; that cap is on the console side, not your network. PKG Sender tries RPI first automatically.";
+"guide.troubleTitle" = "Troubleshooting";
+"guide.trouble.noReceiver" = "• “No receiver” — the ELF is not running on the console. Send it again.";
+"guide.trouble.noAdapter" = "• “No network adapter” — this Mac has no active LAN/Wi-Fi. Check cable or Wi-Fi.";
+"guide.trouble.pushNoStart" = "• Push goes through but the download never starts — allow incoming connections for PKG Sender in System Settings → Network → Firewall (the local server listens on TCP 9898).";
+"guide.trouble.ipChanges" = "• Console IP changes often (DHCP) — just reopen the app; it will offer the new address.";
+"guide.close" = "Close";
+
+/* MARK: - Update dialog */
+"about.autoUpdate" = "Automatically check for updates";
+"about.autoUpdateHelp" = "Check GitHub for a newer release at launch. Offline PCs can turn this off.";
+"about.version" = "Version";
+"about.checkUpdate" = "Check now";
+"about.updateAvailable" = "Update available: %@";
+"about.viewUpdate" = "View update";
+"about.upToDate" = "You're up to date";
+"menu.checkUpdate" = "Check for Updates…";
+"statusbar.update" = "Update ✨";
+"statusbar.updateHelp" = "A newer version is available — open the release page";
+
+/* MARK: - Switch console dialog */
+"switch.title" = "A console is reachable at a different address.";
+"switch.detail" = "Saved: %@\nFound: %@ (%@)";
+"switch.question" = "Switch to it?";
+"switch.keepMine" = "Keep mine";
+"switch.switch" = "Switch";
+
+/* MARK: - Copy choice dialog */
+"copy.titleComplete" = "Already on the console";
+"copy.titleExists" = "File already on the console";
+"copy.detail" = "%@\nOn console: %@ / local: %@.";
+"copy.cancel" = "Cancel";
+"copy.resume" = "Resume";
+"copy.overwrite" = "Overwrite";
+
+/* MARK: - Queue extra */
+"queue.pauseAll" = "⏸ Pause all";
+"queue.resumeAll" = "▶ Resume all";
+"queue.verified" = "verified ✓";
+
+/* MARK: - Notifications */
+"notify.sentTitle" = "Sent to console";
+
+/* MARK: - Language menu */
+"lang.menu" = "Language";
+"lang.system" = "System (auto)";
