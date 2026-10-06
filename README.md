@@ -1,5 +1,8 @@
 # PkgSenderMac
 
+<img width="2280" height="1466" alt="MARVEL Tōkon- Fighting Souls 2468C - 2026-10-04 12 17 07" src="https://github.com/user-attachments/assets/0ddc7a1f-68dc-4ce7-9580-230ee92a3288" />
+
+
 A native macOS port of [Loopayeh/pkg-sender](https://github.com/Loopayeh/pkg-sender)  
 (Windows / .NET / Avalonia). Swift 6 + SwiftUI, zero third-party dependencies,  
 runs natively on both Apple Silicon and Intel.
