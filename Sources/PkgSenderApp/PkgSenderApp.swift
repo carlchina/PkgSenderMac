@@ -29,6 +29,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.setActivationPolicy(.regular)
         NSApp.appearance = NSAppearance(named: .darkAqua)
         NSApp.activate(ignoringOtherApps: true)
+        // SwiftUI on macOS automatically focuses the first focusable control
+        // (usually the PS IP text field). Clear first responder after launch so
+        // no text field keeps the caret unless the user deliberately clicks it.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            for window in NSApp.windows {
+                window.makeFirstResponder(nil)
+            }
+        }
     }
 
     /// Closing the last window quits — the LAN server and the queue live in

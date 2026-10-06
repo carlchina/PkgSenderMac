@@ -142,7 +142,7 @@ struct RootView: View {
                 .background(RoundedRectangle(cornerRadius: 6).fill(Theme.card2))
 
                 HStack(spacing: 6) {
-                    Text("PC")
+                    Text(l10n.t("header.pc"))
                         .font(.system(size: 11, weight: .bold))
                         .foregroundColor(Theme.muted)
                     pcPicker
