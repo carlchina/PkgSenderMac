@@ -1,4 +1,14 @@
-# PKG Sender for macOS — v1.0.0
+# PKG Sender for macOS — v1.1.0
+
+## What's New in 1.1.0
+
+- **Fixed: PS5 downgrade / patch packages could not be read.** Update packages
+  wrapped in a `\x7FLIH` header were previously shown as "unrecognised" and
+  skipped by the library scanner. They now parse correctly — title, content ID,
+  version and cover are displayed, and the entry is flagged as a **patch** in
+  the library. (These are the delta / downgrade packages you get from
+  official update files.)
+- This is a bug-fix release; no other behavior changed.
 
 ## Introduction
 
@@ -16,7 +26,7 @@ A native macOS PKG sender, ported from [Loopayeh/pkg-sender](https://github.com/
 
 - **PS5 push**: send PKG via the Range service, with pause / resume and resumable transfer
 - **PS4 push**: PKG (RPI + GoldHEN payload) sending, plus exFAT image copy
-- **Library**: add folder / scan disks; auto-scans after adding. Handles PS5 PKG, PS4 PKG (incl. legacy `\x7FPKG`), and exFAT images
+- **Library**: add folder / scan disks; auto-scans after adding. Handles PS5 PKG, PS4 PKG (incl. legacy `\x7FPKG`), exFAT images, and now PS5 patch / downgrade packages (`\x7FLIH`)
 - **Multi-select & batch**: ⌘ toggle, ⇧ range select, double-click to send, select all / invert
 - **Send queue**: pause / resume, ▲▼ reorder, PS4 sequential-install mode
 - **Lightweight auto-update**: silently checks GitHub Releases at launch; shows a status-bar prompt and opens the download page when a new version is found (prompt only — no auto download / replace)
@@ -55,7 +65,12 @@ It then runs on this Mac or any other Mac. The app is not sandboxed (it needs to
 
 ---
 
-# PKG Sender for macOS — v1.0.0（中文）
+# PKG Sender for macOS — v1.1.0（中文）
+
+## v1.1.0 更新内容
+
+- **修复：PS5 降级 / 补丁包此前无法读取。** 以 `\x7FLIH` 头封装的 update 包，之前在资源库扫描中会被当作「无法识别的文件」跳过。现在可正常解析：显示标题、内容 ID、版本与封面，并在资源库中标记为**补丁包**。（这类包即官方升级文件中的增量 / 降级包。）
+- 本次为问题修复版本，无其他行为变更。
 
 ## 简介
 
@@ -73,7 +88,7 @@ It then runs on this Mac or any other Mac. The app is not sandboxed (it needs to
 
 - **PS5 推送**：通过 Range 服务发送 PKG，支持暂停 / 恢复、断点续传
 - **PS4 推送**：PKG（RPI + GoldHEN 载荷）发送，以及 exFAT 镜像拷贝
-- **资源库**：添加文件夹 / 扫描磁盘，添加后自动扫描；适配 PS5 PKG、PS4 PKG（含老式 `\x7FPKG`）、exFAT 镜像
+- **资源库**：添加文件夹 / 扫描磁盘，添加后自动扫描；适配 PS5 PKG、PS4 PKG（含老式 `\x7FPKG`）、exFAT 镜像，现已支持 PS5 补丁 / 降级包（`\x7FLIH`）
 - **多选与批量**：⌘ 切换、⇧ 连选、双击发送、全选 / 反选
 - **发送队列**：暂停 / 恢复、▲▼ 重排、PS4 顺序安装模式
 - **轻量自动更新**：启动时静默检查 GitHub Release，发现新版本在状态栏提示并跳转到下载页（仅提示，不自动下载 / 替换）

@@ -120,7 +120,7 @@ public enum PkgReader {
         if !version.isEmpty { params.append(PkgParam("VERSION", version)) }
         params.append(PkgParam("PLATFORM", "PS5"))
 
-        let flavour = cnt.isMeta ? "Meta" : cnt.isDebug ? "Debug" : "Retail"
+        let tag = cnt.isLIH ? "patch" : (cnt.isMeta ? "Meta" : cnt.isDebug ? "Debug" : "Retail")
         return PkgInfo(
             title: title,
             contentId: contentId,
@@ -128,7 +128,7 @@ public enum PkgReader {
             version: version,
             isDLC: isDLCHeuristic(title: title, contentId: contentId),
             platform: "PS5",
-            description: "[PS5 \(flavour)] \(title)",
+            description: "[PS5 \(tag)] \(title)",
             packageSize: source.byteCount,
             format: "pkg",
             digest: cnt.digest,

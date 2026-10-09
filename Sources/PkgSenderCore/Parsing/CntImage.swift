@@ -20,6 +20,12 @@ struct CntImage {
     }
 
     static let fihMagic: [UInt8] = [0x7F, 0x46, 0x49, 0x48]   // \x7FFIH
+    /// PS5 **patch** packages wrap the FIH/CNT pair in this header instead of
+    /// starting with the FIH. The wrapper names both offsets (FIH at 0x10,
+    /// embedded CNT at 0x30); the FIH's own emb field points past EOF on a
+    /// delta, so it cannot be used. Both offsets are 32-bit — reading the FIH
+    /// one as u64 swallows the following field and yields a bogus address.
+    static let lihMagic: [UInt8] = [0x7F, 0x4C, 0x49, 0x48]   // \x7FLIH
     static let cntMagic: [UInt8] = [0x7F, 0x43, 0x4E, 0x54]   // \x7FCNT
     /// Legacy PS4 PKG magic (`\x7FPKG`). Same container role as `\x7FCNT` but
     /// a different header: content id at 0x30 (not 0x40) and no usable entry
@@ -45,17 +51,22 @@ struct CntImage {
     /// True for the legacy PS4 `\x7FPKG` variant, which has no resolvable
     /// entry table; callers fall back to the header content id + digest.
     let isPKG: Bool
+    /// True for PS5 **patch** packages wrapped in a `\x7FLIH` header. The
+    /// embedded CNT is reached through the wrapper's offsets rather than the
+    /// FIH's emb field, which points past EOF for a delta.
+    let isLIH: Bool
     let entries: [Entry]
     private let source: any ByteSource
 
     private init(base: UInt64, contentId: String, digest: String, isDebug: Bool,
-                 isMeta: Bool, isPKG: Bool, entries: [Entry], source: any ByteSource) {
+                 isMeta: Bool, isPKG: Bool, isLIH: Bool, entries: [Entry], source: any ByteSource) {
         self.base = base
         self.contentId = contentId
         self.digest = digest
         self.isDebug = isDebug
         self.isMeta = isMeta
         self.isPKG = isPKG
+        self.isLIH = isLIH
         self.entries = entries
         self.source = source
     }
@@ -73,6 +84,7 @@ struct CntImage {
         var isDebug = false
         var isMeta = false
         var isPKG = false
+        var isLIH = false
 
         if head == fihMagic {
             guard let fih = source.read(at: 0, count: 0x60) else { return nil }
@@ -83,6 +95,24 @@ struct CntImage {
             // The CNT must fit: refuse offsets that point past the file.
             guard embedded <= UInt64(source.byteCount - Int64(headerSize)) else { return nil }
             cntBase = embedded
+        } else if head == lihMagic {
+            // PS5 **patch** package: the FIH and its embedded CNT are reached
+            // through a `\x7FLIH` wrapper that names both offsets (FIH at 0x10,
+            // CNT at 0x30). A delta's FIH emb field points past EOF, so the
+            // wrapper's 32-bit CNT offset is used instead. Reading that offset
+            // as u64 would swallow the next field and point nowhere useful.
+            guard let wrap = source.read(at: 0, count: 0x40) else { return nil }
+            let w = ByteReader(wrap)
+            let fihOff = UInt64(w.u32le(at: 0x10) ?? 0)
+            let cntOff = UInt64(w.u32le(at: 0x30) ?? 0)
+            guard fihOff >= 0x10, cntOff > fihOff,
+                  cntOff + UInt64(headerSize) <= UInt64(source.byteCount) else { return nil }
+            // Read the signature flag from the wrapped FIH, not the CNT.
+            if let fih = source.read(at: fihOff, count: 0x60) {
+                isDebug = (ByteReader(fih).u8(at: 0x05) ?? 0) != 0x80
+            }
+            cntBase = cntOff
+            isLIH = true
         } else if head == cntMagic || head == pkgMagic {
             isPKG = (head == pkgMagic)
             isDebug = true
@@ -138,6 +168,7 @@ struct CntImage {
                         isDebug: isDebug,
                         isMeta: isMeta,
                         isPKG: isPKG,
+                        isLIH: isLIH,
                         entries: entries,
                         source: source)
     }

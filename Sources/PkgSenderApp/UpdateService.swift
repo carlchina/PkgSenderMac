@@ -14,7 +14,7 @@ import Foundation
 /// releases carry only Windows/Linux assets.
 enum UpdateService {
     /// Kept in sync with the release tag.
-    static let appVersion = "v1.0.0"
+    static let appVersion = "v1.1.0"
 
     /// `owner/name` of the repo to watch. Override via the
     /// `PKGSENDER_UPDATE_REPO` environment variable.
