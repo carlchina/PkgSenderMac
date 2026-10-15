@@ -1,4 +1,5 @@
 import AppKit
+import PkgSenderCore
 import SwiftUI
 
 // MARK: - About
@@ -300,4 +301,95 @@ struct CopyChoiceDialog: View {
         .frame(width: 400)
         .background(Theme.card)
     }
+}
+
+// MARK: - Delete confirmation
+
+/// "Move to Trash?" — names every file and states that the delete is
+/// recoverable. Removing a multi-GB package by accident is painful, so the
+/// confirmation is explicit even for a single file.
+struct DeleteConfirmDialog: View {
+    let prompt: DeletePrompt
+    let onResolve: (Bool) -> Void
+    @EnvironmentObject private var l10n: L10n
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(prompt.items.isEmpty
+                 ? l10n.t("delete.blockedTitle")
+                 : l10n.t("delete.title"))
+                .font(.system(size: 14, weight: .bold))
+                .foregroundColor(Theme.text)
+            if !prompt.items.isEmpty {
+                Text(l10n.t("delete.detail", prompt.items.count))
+                    .font(.system(size: 12))
+                    .foregroundColor(Theme.muted)
+                    .fixedSize(horizontal: false, vertical: true)
+                nameList(prompt.items)
+                Text(l10n.t("delete.trashNote"))
+                    .font(.system(size: 11))
+                    .foregroundColor(Theme.amber)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            // Never a silent skip: say which files are still sending and why
+            // they were left alone.
+            if !prompt.busy.isEmpty {
+                Text(l10n.t(prompt.items.isEmpty ? "delete.busyNote" : "delete.busyPartial",
+                            prompt.busy.count))
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundColor(Theme.amber)
+                    .fixedSize(horizontal: false, vertical: true)
+                nameList(prompt.busy)
+            }
+            HStack {
+                Spacer(minLength: 8)
+                if prompt.items.isEmpty {
+                    Button(l10n.t("delete.ok")) { onResolve(false) }
+                        .buttonStyle(ThemeButtonStyle())
+                        .frame(minWidth: 100)
+                } else {
+                    Button(l10n.t("delete.cancel")) { onResolve(false) }
+                        .buttonStyle(ThemeButtonStyle(accent: false))
+                        .frame(minWidth: 100)
+                    Button(l10n.t("delete.confirm")) { onResolve(true) }
+                        .buttonStyle(ThemeButtonStyle())
+                        .frame(minWidth: 110)
+                }
+            }
+            .padding(.top, 6)
+        }
+        .padding(24)
+        .frame(width: 400)
+        .background(Theme.card)
+    }
+
+    /// The files themselves, so the list can be checked before saying yes.
+    /// Scrolls past a few rows — a large selection must not blow up the
+    /// sheet height.
+    @ViewBuilder
+    private func nameList(_ items: [GameItem]) -> some View {
+        if items.count > 1 {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 3) {
+                    ForEach(items) { item in
+                        Text(item.title)
+                            .font(.system(size: 11))
+                            .foregroundColor(Theme.text)
+                            .lineLimit(1)
+                            .frame(maxWidth: .infinity, alignment: leadingEdge)
+                    }
+                }
+            }
+            .frame(maxHeight: 120)
+            .padding(8)
+            .background(RoundedRectangle(cornerRadius: 6).fill(Theme.card2))
+        } else if let item = items.first {
+            Text(item.title)
+                .font(.system(size: 12, weight: .bold))
+                .foregroundColor(Theme.text)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    private var leadingEdge: Alignment { .leading }
 }

@@ -15,6 +15,12 @@ struct GameCard: View {
     let onSelect: (Bool, Bool) -> Void      // (command, shift)
     let onOpen: () -> Void
     let onFamily: () -> Void
+    /// Right-click delete: acts on this card alone.
+    let onDelete: () -> Void
+    let deleteLabel: String
+    /// Open the package in the companion PKG Viewer app.
+    let onOpenInViewer: () -> Void
+    let viewerLabel: String
 
     /// Decoded cover art, kept across body evaluations.
     ///
@@ -32,6 +38,20 @@ struct GameCard: View {
     }
 
     var body: some View {
+        // Right-click menu via SwiftUI's native `.contextMenu`. The
+        // double-click-to-send gesture is attached *inside* `cardContent` with
+        // `.simultaneousGesture`, so the two never compete in the gesture arena
+        // (a plain `.onTapGesture(count: 2)` would be swallowed by the menu's
+        // internal long-press recognizer — the original double-click breakage).
+        cardContent
+            .contextMenu {
+                Button(viewerLabel) { onOpenInViewer() }
+                Button(deleteLabel) { onDelete() }
+            }
+    }
+
+    /// The card itself and its gestures, without any right-click handling.
+    private var cardContent: some View {
         VStack(spacing: 6) {
             cover
             Text(item.title)
@@ -94,12 +114,16 @@ struct GameCard: View {
                     clickFlags = (false, false)
                 }
         )
-        // Double-click to send. `exclusive` double-taps, so a second click
-        // during the window re-selects (cheap) and then sends once.
-        .onTapGesture(count: 2) {
-            let f = NSEvent.modifierFlags
-            if !f.contains(.command), !f.contains(.shift) { onOpen() }
-        }
+        // Double-click to send. Attached as a *simultaneous* gesture so the
+        // `.contextMenu` above never claims the event first — `onTapGesture`
+        // would be suppressed by the menu's long-press recognizer, which is
+        // exactly why double-click used to stop working.
+        .simultaneousGesture(
+            TapGesture(count: 2).onEnded {
+                let f = NSEvent.modifierFlags
+                if !f.contains(.command), !f.contains(.shift) { onOpen() }
+            }
+        )
         .help(helpText)
     }
 
@@ -245,7 +269,11 @@ struct LibraryPanel: View {
                             model.select(id: item.id, command: command, shift: shift)
                         },
                         onOpen: { openItem(item) },
-                        onFamily: { model.toggleFamily(item.familyKey) }
+                        onFamily: { model.toggleFamily(item.familyKey) },
+                        onDelete: { model.requestDelete(item) },
+                        deleteLabel: l10n.t("library.delete"),
+                        onOpenInViewer: { model.openInViewer(item) },
+                        viewerLabel: l10n.t("library.viewInViewer")
                     )
                 }
             }

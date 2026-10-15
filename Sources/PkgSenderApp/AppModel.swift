@@ -43,11 +43,34 @@ struct CopyPrompt: Sendable, Identifiable {
 
 enum CopyChoice: Sendable { case cancel, overwrite, resume }
 
+/// Files queued for deletion, awaiting confirmation.
+///
+/// Deleting moves files to the **Trash** (recoverable) — never an
+/// unrecoverable unlink. The prompt carries the items themselves so the
+/// confirm dialog can name every file it is about to remove.
+struct DeletePrompt: Sendable, Identifiable {
+    let id = UUID()
+    /// Files that can be trashed right now.
+    let items: [GameItem]
+    /// Files still referenced by a live queue row.
+    ///
+    /// These are never trashed: yanking the source out from under a running
+    /// transfer leaves the console with a half-written package, and the row
+    /// would keep pointing at a path that no longer exists.
+    let busy: [GameItem]
+
+    init(items: [GameItem], busy: [GameItem] = []) {
+        self.items = items
+        self.busy = busy
+    }
+}
+
 enum SheetItem: Identifiable {
     case about
     case guide
     case switchConsole(SwitchPrompt)
     case copyChoice(CopyPrompt)
+    case deleteConfirm(DeletePrompt)
 
     var id: String {
         switch self {
@@ -55,6 +78,7 @@ enum SheetItem: Identifiable {
         case .guide: return "guide"
         case .switchConsole(let prompt): return "switch-\(prompt.address)"
         case .copyChoice(let prompt): return "copy-\(prompt.id.uuidString)"
+        case .deleteConfirm(let prompt): return "delete-\(prompt.id.uuidString)"
         }
     }
 }
@@ -524,6 +548,10 @@ final class AppModel: ObservableObject {
         let bus = events
         let found = await scanner.scanAsync(roots: urls) { text in bus.send(.progress(text)) }
         let rows = found.filter { !$0.isFolder }
+        // Imported packages lose their download flag: Gatekeeper would
+        // otherwise verify each one (a multi-minute scan for a 30 GB file)
+        // before the viewer — or any LaunchServices hand-off — can open it.
+        for row in rows { clearQuarantine(row.path) }
         if merge { library.merge(rows) } else { library.replace(rows) }
         all = library.snapshot()
         if shared { publishCatalog() }
@@ -579,6 +607,9 @@ final class AppModel: ObservableObject {
             status = l10n.t("status.couldNotRead", url.lastPathComponent)
             return
         }
+        // Dropped files are imports too: clear the download flag so a later
+        // viewer hand-off is not held up by Gatekeeper verification.
+        clearQuarantine(item.path)
         if item.role == .image {
             library.merge([item])
             all = library.snapshot()
@@ -776,6 +807,139 @@ final class AppModel: ObservableObject {
         hasPkgSelection = picked.contains { $0.role != .image }
         hasImageSelection = picked.contains { $0.role == .image }
         updateGamesLabel()
+    }
+
+    // MARK: - Open in PKG Viewer
+
+    /// Bundle id of the companion viewer app (PKG Viewer for macOS).
+    private static let viewerBundleID = "com.local.pkgviewermac"
+
+    /// Hand the package to PKG Viewer, the companion app, so its details can
+    /// be inspected without leaving the library.
+    func openInViewer(_ item: GameItem) {
+        guard let app = viewerAppURL() else {
+            status = l10n.t("status.viewerMissing")
+            return
+        }
+        let file = URL(fileURLWithPath: item.path)
+        // A downloaded package carries the Gatekeeper quarantine flag; clear
+        // it first so the hand-off does not stall on a multi-GB verification
+        // scan ("正在验证…") before the viewer ever sees the file.
+        clearQuarantine(item.path)
+        Task {
+            do {
+                try await NSWorkspace.shared.open([file],
+                                                  withApplicationAt: app,
+                                                  configuration: NSWorkspace.OpenConfiguration())
+                status = l10n.t("status.viewerOpened")
+            } catch {
+                status = l10n.t("status.viewerFailed")
+            }
+        }
+    }
+
+    /// Where PKG Viewer lives.
+    ///
+    /// LaunchServices first, then the standard install locations: a freshly
+    /// built copy that has never been launched may not be registered yet, and
+    /// a `mdfind` by bundle id can miss it for the same reason.
+    private func viewerAppURL() -> URL? {
+        if let url = NSWorkspace.shared
+            .urlForApplication(withBundleIdentifier: Self.viewerBundleID) { return url }
+        let paths = ["/Applications/PkgViewer.app",
+                     ("~/Applications/PkgViewer.app" as NSString).expandingTildeInPath]
+        for path in paths where FileManager.default.fileExists(atPath: path) {
+            return URL(fileURLWithPath: path)
+        }
+        return nil
+    }
+
+    /// Drop the Gatekeeper quarantine flag from a file.
+    ///
+    /// Packages fetched from the internet carry `com.apple.quarantine`.
+    /// Handing such a file to another app through LaunchServices makes
+    /// Gatekeeper verify it first — a multi-minute progress dialog on a
+    /// 30 GB package, even though the library scan has already read every
+    /// byte. Importing a file into the tool means the user wants to work with
+    /// it, so the flag is cleared at that point (and again right before a
+    /// viewer hand-off, which also covers files imported earlier).
+    ///
+    /// Best-effort: filesystems that refuse the write (or lack xattr support)
+    /// and permission errors are ignored.
+    private func clearQuarantine(_ path: String) {
+        let fsPath = FileManager.default.fileSystemRepresentation(withPath: path)
+        removexattr(fsPath, "com.apple.quarantine", 0)
+    }
+
+    // MARK: - Delete
+
+    /// Ask before trashing one card.
+    ///
+    /// The target is the item itself rather than the selection so a
+    /// right-click always acts on *that* file, whatever the click did to the
+    /// selection. Multi-file deletes come from `requestDeleteSelected()`.
+    func requestDelete(_ item: GameItem) {
+        // Still queued / sending: nothing to delete, but the dialog still
+        // opens to say *why* — a silent no-op would just look broken.
+        sheet = .deleteConfirm(isQueueBusy(item.id)
+            ? DeletePrompt(items: [], busy: [item])
+            : DeletePrompt(items: [item]))
+    }
+
+    /// Ask before trashing the current selection (menu / ⌘⌫).
+    ///
+    /// Live transfers are split out and skipped; the rest go to the Trash.
+    func requestDeleteSelected() {
+        let picked = games.filter { selection.contains($0.id) }
+        guard !picked.isEmpty else { return }
+        let busy = picked.filter { isQueueBusy($0.id) }
+        let trashable = picked.filter { !isQueueBusy($0.id) }
+        sheet = .deleteConfirm(DeletePrompt(items: trashable, busy: busy))
+    }
+
+    /// True while a live queue row still references this file.
+    ///
+    /// `QueueEntry.id` is the game id, and `isFinished` covers done / failed /
+    /// cancelled — so anything unfinished is queued, sending, copying or
+    /// paused, i.e. the bytes are still needed.
+    private func isQueueBusy(_ id: String) -> Bool {
+        queue.contains { $0.id == id && !$0.state.isFinished }
+    }
+
+    /// `proceed == false` cancels.
+    ///
+    /// Files go to the **Trash** — recoverable until the user empties it, so
+    /// a mis-click is never an unrecoverable unlink. Failures are counted,
+    /// not fatal: a locked file simply stays in the library.
+    func resolveDelete(_ prompt: DeletePrompt, proceed: Bool) {
+        sheet = nil
+        guard proceed else { return }
+
+        var removed: Set<String> = []
+        var failed = 0
+        for item in prompt.items {
+            do {
+                try FileManager.default.trashItem(at: URL(fileURLWithPath: item.path),
+                                                  resultingItemURL: nil)
+                removed.insert(item.path)
+            } catch {
+                failed += 1
+            }
+        }
+
+        if !removed.isEmpty {
+            all.removeAll { removed.contains($0.path) }
+            library.replace(all)
+            // Keep the shared catalog in step: a deleted file must disappear
+            // from what the console can request, not just from the grid.
+            if shared { publishCatalog() }
+            clearSelection()
+            scheduleFilter(debounce: false)
+            phase = all.isEmpty ? setEmptyPhase("library.emptyNoFiles") : .loaded
+        }
+        status = failed == 0
+            ? l10n.t("status.deleted", removed.count)
+            : l10n.t("status.deleteFailed", failed)
     }
 
     // MARK: - File server

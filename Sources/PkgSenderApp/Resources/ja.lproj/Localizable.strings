@@ -283,3 +283,22 @@
 
 /* MARK: - 通知 */
 "notify.sentTitle" = "コンソールへ送信完了";
+
+/* MARK: - 削除 */
+"library.delete" = "削除";
+"menu.delete" = "削除";
+"delete.title" = "ゴミ箱に移動しますか？";
+"delete.detail" = "%d 個の項目をゴミ箱に移動します：";
+"delete.trashNote" = "ゴミ箱を空にする前であれば復元できます。";
+"delete.cancel" = "キャンセル";
+"delete.confirm" = "ゴミ箱へ移動";
+"status.deleted" = "%d 個の項目をゴミ箱に移動しました";
+"status.deleteFailed" = "%d 個の項目を削除できませんでした";
+"delete.blockedTitle" = "送信中は削除できません";
+"delete.busyNote" = "これらのファイルは送信キューに残っています。先に送信をキャンセルしてから削除してください。";
+"delete.busyPartial" = "%d 個のファイルは送信中のためスキップしました。";
+"delete.ok" = "OK";
+"library.viewInViewer" = "PKG View で表示";
+"status.viewerOpened" = "PKG View で開きました";
+"status.viewerMissing" = "PKG View が見つかりません";
+"status.viewerFailed" = "PKG View で開けませんでした";

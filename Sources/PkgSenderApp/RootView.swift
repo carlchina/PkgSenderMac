@@ -369,6 +369,8 @@ struct RootView: View {
             SwitchDialog(prompt: prompt) { model.resolveSwitch($0) }
         case .copyChoice(let prompt):
             CopyChoiceDialog(prompt: prompt) { model.resolveCopy($0) }
+        case .deleteConfirm(let prompt):
+            DeleteConfirmDialog(prompt: prompt) { model.resolveDelete(prompt, proceed: $0) }
         }
     }
 }

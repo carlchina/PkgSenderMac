@@ -1,14 +1,16 @@
-# PKG Sender for macOS — v1.1.0
+# PKG Sender for macOS — v1.2.0
 
-## What's New in 1.1.0
+## What's New in 1.2.0
 
-- **Fixed: PS5 downgrade / patch packages could not be read.** Update packages
-  wrapped in a `\x7FLIH` header were previously shown as "unrecognised" and
-  skipped by the library scanner. They now parse correctly — title, content ID,
-  version and cover are displayed, and the entry is flagged as a **patch** in
-  the library. (These are the delta / downgrade packages you get from
-  official update files.)
-- This is a bug-fix release; no other behavior changed.
+### New
+- **Remove items from the library.** Right-click a card (or use the **Library ▸ Delete** menu / `⌘⌫`) to remove an entry. A confirmation dialog asks first; removed items go to the Trash, so they stay recoverable.
+- **Right-click "Open in PKG Viewer".** Send a package straight to the companion PKG Viewer app from the card's context menu.
+- **Send-queue protection.** You can no longer delete an item that is queued, sending, or copying — the dialog explains the file is busy and must finish or be removed from the queue first.
+
+### Fixed
+- **Double-click to send works again.** A gesture-arena conflict between the context menu and the double-click tap had silently disabled double-click-to-send. The two gestures are now attached so they no longer compete.
+- **Card layout restored.** A previous menu rewrite had stretched the library cards; the grid layout is back to normal.
+- **No more Gatekeeper hang when opening PKG Viewer.** The app now clears the `com.apple.quarantine` attribute from packages before handing them to PKG Viewer, so macOS no longer pops a verification dialog (which could also open two Viewer windows at once).
 
 ## Introduction
 
@@ -26,7 +28,8 @@ A native macOS PKG sender, ported from [Loopayeh/pkg-sender](https://github.com/
 
 - **PS5 push**: send PKG via the Range service, with pause / resume and resumable transfer
 - **PS4 push**: PKG (RPI + GoldHEN payload) sending, plus exFAT image copy
-- **Library**: add folder / scan disks; auto-scans after adding. Handles PS5 PKG, PS4 PKG (incl. legacy `\x7FPKG`), exFAT images, and now PS5 patch / downgrade packages (`\x7FLIH`)
+- **Library**: add folder / scan disks; auto-scans after adding. Handles PS5 PKG, PS4 PKG (incl. legacy `\x7FPKG`), exFAT images, and PS5 patch / downgrade packages (`\x7FLIH`)
+- **Library management**: remove entries (moved to Trash, recoverable) with a confirm prompt; open a package in PKG Viewer from the card's right-click menu
 - **Multi-select & batch**: ⌘ toggle, ⇧ range select, double-click to send, select all / invert
 - **Send queue**: pause / resume, ▲▼ reorder, PS4 sequential-install mode
 - **Lightweight auto-update**: silently checks GitHub Releases at launch; shows a status-bar prompt and opens the download page when a new version is found (prompt only — no auto download / replace)
@@ -65,12 +68,19 @@ It then runs on this Mac or any other Mac. The app is not sandboxed (it needs to
 
 ---
 
-# PKG Sender for macOS — v1.1.0（中文）
+# PKG Sender for macOS — v1.2.0（中文）
 
-## v1.1.0 更新内容
+## v1.2.0 更新内容
 
-- **修复：PS5 降级 / 补丁包此前无法读取。** 以 `\x7FLIH` 头封装的 update 包，之前在资源库扫描中会被当作「无法识别的文件」跳过。现在可正常解析：显示标题、内容 ID、版本与封面，并在资源库中标记为**补丁包**。（这类包即官方升级文件中的增量 / 降级包。）
-- 本次为问题修复版本，无其他行为变更。
+### 新增
+- **资源库删除功能**：右键卡片（或菜单 **Library ▸ 删除** / `⌘⌫`）移除条目，删除前二次确认；条目移入废纸篓，可恢复。
+- **右键「通过 PKG Viewer 查看」**：从卡片右键菜单直接调用 PKG Viewer 打开包。
+- **发送队列保护**：正在排队 / 发送 / 拷贝中的条目不可删除，对话框会提示文件占用中，需先完成或移出队列。
+
+### 修复
+- **双击发送恢复**：右键菜单与双击手势在手势竞技场中相互抢占，导致双击发送静默失效；已重构使两者不再冲突。
+- **卡片布局恢复**：此前一次菜单改写误把卡片拉伸，网格布局已恢复正常。
+- **打开 PKG Viewer 不再卡 Gatekeeper**：交给 PKG Viewer 前自动清除 `com.apple.quarantine` 属性，避免 macOS 弹出验证框（也曾导致 Viewer 一次开两个窗口）。
 
 ## 简介
 
@@ -88,7 +98,8 @@ It then runs on this Mac or any other Mac. The app is not sandboxed (it needs to
 
 - **PS5 推送**：通过 Range 服务发送 PKG，支持暂停 / 恢复、断点续传
 - **PS4 推送**：PKG（RPI + GoldHEN 载荷）发送，以及 exFAT 镜像拷贝
-- **资源库**：添加文件夹 / 扫描磁盘，添加后自动扫描；适配 PS5 PKG、PS4 PKG（含老式 `\x7FPKG`）、exFAT 镜像，现已支持 PS5 补丁 / 降级包（`\x7FLIH`）
+- **资源库**：添加文件夹 / 扫描磁盘，添加后自动扫描；适配 PS5 PKG、PS4 PKG（含老式 `\x7FPKG`）、exFAT 镜像，以及 PS5 补丁 / 降级包（`\x7FLIH`）
+- **资源管理**：支持删除条目（移入废纸篓、可恢复，带二次确认）；可从卡片右键菜单调用 PKG Viewer 打开包
 - **多选与批量**：⌘ 切换、⇧ 连选、双击发送、全选 / 反选
 - **发送队列**：暂停 / 恢复、▲▼ 重排、PS4 顺序安装模式
 - **轻量自动更新**：启动时静默检查 GitHub Release，发现新版本在状态栏提示并跳转到下载页（仅提示，不自动下载 / 替换）

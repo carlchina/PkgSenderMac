@@ -81,6 +81,12 @@ struct PkgSenderCommands: Commands {
                 .keyboardShortcut("A", modifiers: .command)
             Button(L10n.shared.t("menu.invertSelection")) { model.invertSelection() }
                 .keyboardShortcut("I", modifiers: [.command, .shift])
+            Divider()
+            // ⌘⌫ is the system-wide "move to Trash" shortcut; the delete
+            // always goes through a confirmation sheet first.
+            Button(L10n.shared.t("menu.delete")) { model.requestDeleteSelected() }
+                .keyboardShortcut(.delete, modifiers: .command)
+                .disabled(model.selection.isEmpty)
         }
         CommandMenu(L10n.shared.t("menu.transfer")) {
             Button(L10n.shared.t("menu.sendPkg")) { model.enqueueSelection() }

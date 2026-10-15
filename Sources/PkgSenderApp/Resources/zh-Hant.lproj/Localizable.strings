@@ -283,3 +283,22 @@
 
 /* MARK: - 通知 */
 "notify.sentTitle" = "已傳送到主機";
+
+/* MARK: - 刪除 */
+"library.delete" = "刪除";
+"menu.delete" = "刪除";
+"delete.title" = "移到垃圾桶？";
+"delete.detail" = "將 %d 個項目移到垃圾桶：";
+"delete.trashNote" = "清空垃圾桶前可從垃圾桶還原。";
+"delete.cancel" = "取消";
+"delete.confirm" = "移到垃圾桶";
+"status.deleted" = "已將 %d 個項目移到垃圾桶";
+"status.deleteFailed" = "%d 個項目刪除失敗";
+"delete.blockedTitle" = "傳送中無法刪除";
+"delete.busyNote" = "這些檔案仍在傳送佇列中。請先取消傳送，再刪除。";
+"delete.busyPartial" = "%d 個檔案仍在傳送中，已跳過。";
+"delete.ok" = "好";
+"library.viewInViewer" = "透過 PKG View 檢視";
+"status.viewerOpened" = "已在 PKG View 中開啟";
+"status.viewerMissing" = "找不到 PKG View";
+"status.viewerFailed" = "無法在 PKG View 中開啟";

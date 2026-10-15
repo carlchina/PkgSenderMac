@@ -283,3 +283,22 @@
 
 /* MARK: - 通知 */
 "notify.sentTitle" = "已发送到主机";
+
+/* MARK: - 删除 */
+"library.delete" = "删除";
+"menu.delete" = "删除";
+"delete.title" = "移到废纸篓？";
+"delete.detail" = "将 %d 个项目移到废纸篓：";
+"delete.trashNote" = "清空废纸篓前可从废纸篓恢复。";
+"delete.cancel" = "取消";
+"delete.confirm" = "移到废纸篓";
+"status.deleted" = "已将 %d 个项目移到废纸篓";
+"status.deleteFailed" = "%d 个项目删除失败";
+"delete.blockedTitle" = "发送中无法删除";
+"delete.busyNote" = "这些文件仍在发送队列中。请先取消发送，然后再删除。";
+"delete.busyPartial" = "%d 个文件仍在发送中，已跳过。";
+"delete.ok" = "好";
+"library.viewInViewer" = "通过 PKG View 查看";
+"status.viewerOpened" = "已在 PKG View 中打开";
+"status.viewerMissing" = "未找到 PKG View";
+"status.viewerFailed" = "无法在 PKG View 中打开";

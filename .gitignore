@@ -65,6 +65,9 @@ fastlane/test_output
 # App build output (ad-hoc signed .app + icon scratch)
 build/
 
+# Release archives (distributed via GitHub Releases, not committed)
+*.zip
+
 # Temporary verification tools (compiled binaries + scratch sources)
 check/
 

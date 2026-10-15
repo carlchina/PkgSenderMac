@@ -283,3 +283,22 @@
 /* MARK: - Language menu */
 "lang.menu" = "Language";
 "lang.system" = "System (auto)";
+
+/* MARK: - Delete */
+"library.delete" = "Delete";
+"menu.delete" = "Delete";
+"delete.title" = "Move to Trash?";
+"delete.detail" = "%d item(s) will be moved to the Trash:";
+"delete.trashNote" = "You can restore them from the Trash before emptying it.";
+"delete.cancel" = "Cancel";
+"delete.confirm" = "Move to Trash";
+"status.deleted" = "Moved %d item(s) to the Trash";
+"status.deleteFailed" = "Could not delete %d item(s)";
+"delete.blockedTitle" = "Cannot delete while sending";
+"delete.busyNote" = "These files are still in the send queue. Cancel the transfer first, then delete.";
+"delete.busyPartial" = "%d file(s) are still sending and were skipped.";
+"delete.ok" = "OK";
+"library.viewInViewer" = "Open in PKG Viewer";
+"status.viewerOpened" = "Opened in PKG Viewer";
+"status.viewerMissing" = "PKG Viewer not found";
+"status.viewerFailed" = "Could not open in PKG Viewer";
